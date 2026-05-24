@@ -20,10 +20,10 @@ const app: Express = express();
 app.use(helmet());
 app.use(mongoSanitize());
 
-// CORS — in dev allow any localhost origin, in prod use CORS_ORIGIN env var
-const allowedOrigins = (process.env.CORS_ORIGIN || 'https://premium-blog-platform.vercel.app/' || 'https://premium-blog-frontend-production.up.railway.app/')
+// CORS — in dev allow any localhost, in prod use CORS_ORIGIN env var
+const allowedOrigins = (process.env.CORS_ORIGIN || 'https://premium-blog-platform.vercel.app')
   .split(',')
-  .map(o => o.trim())
+  .map(o => o.trim().replace(/\/$/, ''))
   .filter(Boolean);
 
 app.use(cors({
@@ -35,7 +35,8 @@ app.use(cors({
       return callback(null, true);
     }
     // In production, check against explicit allowlist
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    const normalizedOrigin = origin.replace(/\/$/, '');
+    if (allowedOrigins.includes(normalizedOrigin)) return callback(null, true);
     callback(new Error(`CORS: origin ${origin} not allowed`));
   },
   credentials: true,
