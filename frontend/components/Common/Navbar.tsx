@@ -77,7 +77,7 @@ export default function Navbar() {
 
           {user ? (
             <>
-              <Link href="/dashboard" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium">{t.nav.dashboard}</Link>
+              <a href="/dashboard" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition font-medium">{t.nav.dashboard}</a>
 
               {/* Avatar dropdown */}
               <div ref={dropdownRef} className="relative">
@@ -100,10 +100,10 @@ export default function Navbar() {
                       className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                       <User size={15} className="text-gray-400" /> My Profile
                     </Link>
-                    <Link href="/dashboard" onClick={() => setDropdownOpen(false)}
+                    <a href="/dashboard" onClick={() => setDropdownOpen(false)}
                       className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                       <LayoutDashboard size={15} className="text-gray-400" /> Dashboard
-                    </Link>
+                    </a>
                     <Link href="/my-blogs" onClick={() => setDropdownOpen(false)}
                       className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                       <BookOpen size={15} className="text-gray-400" /> My Blogs
@@ -162,10 +162,10 @@ export default function Navbar() {
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
                   <User size={16} /> My Profile
                 </Link>
-                <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}
+                <a href="/dashboard" onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
                   <LayoutDashboard size={16} /> Dashboard
-                </Link>
+                </a>
                 <Link href="/my-blogs" onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800">
                   <BookOpen size={16} /> My Blogs
