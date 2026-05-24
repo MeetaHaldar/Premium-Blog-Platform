@@ -3,9 +3,11 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { Locale, translations } from '@/lib/i18n';
 
+type TranslationSet = (typeof translations)[Locale];
+
 interface LocaleContextType {
   locale: Locale;
-  t: typeof translations.en;
+  t: TranslationSet;
   setLocale: (l: Locale) => void;
 }
 
