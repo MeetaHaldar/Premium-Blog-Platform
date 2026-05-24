@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.vercel.app';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://premium-blog-platform-7wt2.vercel.app/';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://premium-blog-platform.vercel.app/';
 
 
 https: https: export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
