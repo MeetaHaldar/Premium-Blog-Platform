@@ -6,6 +6,11 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth';
+import blogRoutes from './routes/blogs';
+import paymentRoutes from './routes/payment';
+import uploadRoutes from './routes/upload';
+import userRoutes from './routes/user';
 
 dotenv.config();
 
@@ -66,6 +71,18 @@ app.use(session({
 // Health check
 app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'OK', timestamp: new Date() });
+});
+
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api/user', userRoutes);
+
+// 404 handler
+app.use((_req: Request, res: Response) => {
+  res.status(404).json({ success: false, message: 'Route not found' });
 });
 
 // Error handler
