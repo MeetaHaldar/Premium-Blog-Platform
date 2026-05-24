@@ -1,11 +1,6 @@
 import app from './app';
 import { connectDB } from './config/database';
 import { configureCloudinary } from './config/cloudinary';
-import authRoutes from './routes/auth';
-import blogRoutes from './routes/blogs';
-import paymentRoutes from './routes/payment';
-import uploadRoutes from './routes/upload';
-import userRoutes from './routes/user';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
@@ -47,17 +42,6 @@ async function backfillAuthorNames() {
 // Init services
 connectDB().then(() => backfillAuthorNames());
 configureCloudinary();
-
-app.use('/api/auth', authRoutes);
-app.use('/api/blogs', blogRoutes);
-app.use('/api/payments', paymentRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/api/user', userRoutes);
-
-// 404 handler
-app.use((_req, res) => {
-  res.status(404).json({ success: false, message: 'Route not found' });
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
