@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(mongoSanitize());
 
 // CORS — in dev allow any localhost origin, in prod use CORS_ORIGIN env var
-const allowedOrigins = (process.env.CORS_ORIGIN || '')
+const allowedOrigins = (process.env.CORS_ORIGIN || 'https://premium-blog-platform.vercel.app/' || 'https://premium-blog-frontend-production.up.railway.app/')
   .split(',')
   .map(o => o.trim())
   .filter(Boolean);
