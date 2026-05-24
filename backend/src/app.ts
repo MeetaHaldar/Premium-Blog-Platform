@@ -74,6 +74,11 @@ app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'OK', timestamp: new Date() });
 });
 
+// API greeting
+app.get('/api', (_req: Request, res: Response) => {
+  res.json({ message: 'Hi! The API is running 🚀' });
+});
+
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
