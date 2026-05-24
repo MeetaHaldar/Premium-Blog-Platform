@@ -1,10 +1,9 @@
 import { MetadataRoute } from 'next';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://premium-blog-platform-7wt2.vercel.app/';
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://premium-blog-platform.vercel.app/';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://premium-blog-platform-production.up.railway.app/api';
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://premium-blog-platform.vercel.app').replace(/\/$/, '');
 
-
-https: https: export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
