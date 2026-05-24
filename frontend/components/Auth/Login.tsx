@@ -32,7 +32,10 @@ export default function Login() {
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user);
       toast.success('Logged in successfully');
-      router.push('/dashboard');
+      // Use a small delay to ensure state is updated before navigation
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 100);
     } catch (error: any) {
       toast.error(error.response?.data?.message || 'Login failed');
     } finally {
