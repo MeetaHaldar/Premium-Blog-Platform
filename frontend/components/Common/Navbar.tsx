@@ -35,6 +35,8 @@ export default function Navbar() {
     try {
       await authAPI.logout();
       logout();
+      // Clear the client-side cookie too
+      document.cookie = 'token=; path=/; max-age=0; SameSite=Lax';
       setDropdownOpen(false);
       toast.success('Logged out successfully');
       router.push('/');

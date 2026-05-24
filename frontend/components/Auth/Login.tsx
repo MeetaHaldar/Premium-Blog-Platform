@@ -29,7 +29,13 @@ export default function Login() {
     try {
       setIsLoading(true);
       const response = await authAPI.login(data);
-      localStorage.setItem('token', response.data.token);
+      const token = response.data.token;
+
+      // Store in localStorage for API interceptor
+      localStorage.setItem('token', token);
+      // Also store in cookie so Next.js middleware can protect routes
+      document.cookie = `token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
+
       setUser(response.data.user);
       toast.success('Logged in successfully');
       router.push('/dashboard');

@@ -46,6 +46,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    // Clear the middleware cookie
+    if (typeof document !== 'undefined') {
+      document.cookie = 'token=; path=/; max-age=0; SameSite=Lax';
+    }
   };
 
   return (
