@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://premium-blog-platform-7wt2.vercel.app/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://premium-blog-platform-production.up.railway.app/api";
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: API_URL,
